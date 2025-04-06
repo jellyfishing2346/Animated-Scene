@@ -1,0 +1,167 @@
+<!DOCTYPE wick>
+<wick version="1.0">
+    <project name="MultiLayerAnimation" framerate="30" width="800" height="600" backgroundColor="0x87CEEB">
+        <resources>
+            <asset name="cloud1" type="svg" encoding="base64">PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNjAiPjxwYXRoIGZpbGw9IiNmZmZmZmYiIGQ9Ik0yMCwxMCBDNDAsLTUgODAsNSA5MCwyMCBDMTA1LDQwIDgwLDQ1IDYwLDQwIEM0MCw1NSAxNSw1NSA1LDM1IEMtNSwyNSAxMCwxNSAyMCwxMCBaIi8+PC9zdmc+</asset>
+            <asset name="cloud2" type="svg" encoding="base64">PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgNjAiPjxwYXRoIGZpbGw9IiNmZmZmZmYiIGQ9Ik0yMCwxNSBDNDAsLTUgODAsMCAxMDAsMTUgQzEzMCwzMCAxMTAsNTAgODAsNTAgQzUwLDcwIDEwLDY1IDUsNDAgQy01LDIwIDEwLDEwIDIwLDE1IFoiLz48L3N2Zz4=</asset>
+            <asset name="tree" type="svg" encoding="base64">PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCA4MCI+PHBhdGggZmlsbD0iIzg1NkMzNCIgZD0iTTE4LDYwIEwyMiw2MCBMMjIsODAgTDE4LDgwIFoiLz48cGF0aCBmaWxsPSIjM0E5MTFDIiBkPSJNMCw0MCBDMTAsMjAgMzAsMTUgNDAsMzAgQzUwLDQ1IDQwLDYwIDIwLDYwIEM1LDYwIDAsNTUgMCw0MCBaIi8+PC9zdmc+</asset>
+            <asset name="car" type="svg" encoding="base64">PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNTAiPjxyZWN0IHg9IjEwIiB5PSIyMCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjRkY2NjAwIi8+PHJlY3QgeD0iMjUiIHk9IjEwIiB3aWR0aD0iNTAiIGhlaWdodD0iMTAiIGZpbGw9IiNGRkE0MDAiLz48Y2lyY2xlIGN4PSIyNSIgY3k9IjQwIiByPSIxMCIgZmlsbD0iIzMzMyIvPjxjaXJjbGUgY3g9Ijc1IiBjeT0iNDAiIHI9IjEwIiBmaWxsPSIjMzMzIi8+PGNpcmNsZSBjeD0iMjUiIGN5PSI0MCIgcj0iNSIgZmlsbD0iI0ZGRiIvPjxjaXJjbGUgY3g9Ijc1IiBjeT0iNDAiIHI9IjUiIGZpbGw9IiNGRkYiLz48L3N2Zz4=</asset>
+            <asset name="bird" type="svg" encoding="base64">PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MCAyMCI+PHBhdGggZmlsbD0iIzMzMyIgZD0iTTUsMTAgTDE1LDUgTDI1LDEwIEwxNSwxNSBaIi8+PHBhdGggZmlsbD0iIzMzMyIgZD0iTTI1LDEwIEwzNSw1IEw0NSwxMCBMMzUsMTUgWiIvPjwvc3ZnPg==</asset>
+        </resources>
+        <script>
+            function createBackground() {
+                var background = new this.Group();
+                background.name = "Background";
+                
+                // Sky gradient
+                var sky = new this.Rectangle(0, 0, 800, 600);
+                sky.fill = new this.Gradient("linear", ["#87CEEB", "#E0F7FF"], [0, 1], 0, 0, 0, 600);
+                background.addChild(sky);
+                
+                // Sun
+                var sun = new this.Circle(700, 100, 50);
+                sun.fill = "#FDB813";
+                background.addChild(sun);
+                
+                // Distant mountains
+                var mountains = new this.Path();
+                mountains.fill = "#7A9A5D";
+                mountains.moveTo(0, 400);
+                mountains.lineTo(200, 200);
+                mountains.lineTo(400, 350);
+                mountains.lineTo(600, 150);
+                mountains.lineTo(800, 300);
+                mountains.lineTo(800, 600);
+                mountains.lineTo(0, 600);
+                mountains.closePath();
+                background.addChild(mountains);
+                
+                // Clouds
+                for (var i = 0; i < 4; i++) {
+                    var cloud = new this.SVGAsset(this.getAsset("cloud" + (i % 2 + 1)));
+                    cloud.x = 200 * i;
+                    cloud.y = 50 + Math.random() * 50;
+                    cloud.scaleX = 0.5 + Math.random() * 0.5;
+                    cloud.scaleY = cloud.scaleX;
+                    cloud.opacity = 0.8;
+                    background.addChild(cloud);
+                    
+                    this.tweens.create(cloud, {
+                        x: cloud.x + 100,
+                        duration: 60 + Math.random() * 60,
+                        loop: true,
+                        yoyo: true,
+                        ease: "linear"
+                    });
+                }
+                
+                return background;
+            }
+            
+            function createMiddleLayer() {
+                var middle = new this.Group();
+                middle.name = "Middle";
+                
+                // Road
+                var road = new this.Rectangle(0, 450, 800, 150);
+                road.fill = "#333333";
+                middle.addChild(road);
+                
+                // Road markings
+                for (var i = 0; i < 10; i++) {
+                    var line = new this.Rectangle(80 * i, 520, 40, 10);
+                    line.fill = "#FFFFFF";
+                    middle.addChild(line);
+                }
+                
+                // Trees
+                for (var i = 0; i < 8; i++) {
+                    var tree = new this.SVGAsset(this.getAsset("tree"));
+                    tree.x = 100 * i;
+                    tree.y = 400;
+                    tree.scaleX = 0.8 + Math.random() * 0.4;
+                    tree.scaleY = tree.scaleX;
+                    middle.addChild(tree);
+                }
+                
+                // Cars
+                for (var i = 0; i < 3; i++) {
+                    var car = new this.SVGAsset(this.getAsset("car"));
+                    car.x = 200 * i;
+                    car.y = 430;
+                    car.scaleX = 0.6;
+                    car.scaleY = 0.6;
+                    middle.addChild(car);
+                    
+                    this.tweens.create(car, {
+                        x: car.x + 800,
+                        duration: 120 + Math.random() * 60,
+                        loop: true,
+                        ease: "linear"
+                    });
+                }
+                
+                return middle;
+            }
+            
+            function createForeground() {
+                var foreground = new this.Group();
+                foreground.name = "Foreground";
+                
+                // Grass
+                var grass = new this.Rectangle(0, 500, 800, 100);
+                grass.fill = "#7A9A5D";
+                foreground.addChild(grass);
+                
+                // Birds
+                for (var i = 0; i < 5; i++) {
+                    var bird = new this.SVGAsset(this.getAsset("bird"));
+                    bird.x = 150 * i;
+                    bird.y = 100 + Math.random() * 100;
+                    bird.scaleX = 0.5 + Math.random() * 0.5;
+                    bird.scaleY = bird.scaleX;
+                    foreground.addChild(bird);
+                    
+                    this.tweens.create(bird, {
+                        x: bird.x + 300,
+                        y: bird.y + (Math.random() > 0.5 ? 20 : -20),
+                        duration: 90 + Math.random() * 60,
+                        loop: true,
+                        yoyo: true,
+                        ease: "linear"
+                    });
+                }
+                
+                // Falling leaves
+                for (var i = 0; i < 15; i++) {
+                    var leaf = new this.Ellipse(0, 0, 10, 5);
+                    leaf.fill = ["#FFA500", "#FF4500", "#FF6347", "#FF8C00"][i % 4];
+                    leaf.rotation = Math.random() * 360;
+                    leaf.x = Math.random() * 800;
+                    leaf.y = Math.random() * 600;
+                    foreground.addChild(leaf);
+                    
+                    this.tweens.create(leaf, {
+                        x: leaf.x + (Math.random() > 0.5 ? 50 : -50),
+                        y: leaf.y + 200,
+                        rotation: leaf.rotation + 360,
+                        duration: 120 + Math.random() * 120,
+                        loop: true,
+                        ease: "linear"
+                    });
+                }
+                
+                return foreground;
+            }
+            
+            function onProjectLoad() {
+                this.root.addChild(createBackground());
+                this.root.addChild(createMiddleLayer());
+                this.root.addChild(createForeground());
+                
+                // Animation lasts 4 seconds (30fps * 4 = 120 frames)
+                this.root.numFrames = 120;
+            }
+        </script>
+    </project>
+</wick>

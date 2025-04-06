@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Layer Wick Editor Animation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .animation-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .description {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .download-link {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .download-link:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Multi-Layer Wick Editor Animation</h1>
+    
+    <div class="description">
+        <p>This animation demonstrates a multi-layer scene with:</p>
+        <ul>
+            <li><strong>Background layer:</strong> Animated clouds, sun, and mountains</li>
+            <li><strong>Middle layer:</strong> Moving cars on a road with trees</li>
+            <li><strong>Foreground layer:</strong> Flying birds and falling leaves</li>
+        </ul>
+        <p>The animation is set to 30 FPS and lasts for 4 seconds, designed to loop seamlessly.</p>
+    </div>
+    
+    <div class="animation-container">
+        <video width="800" height="600" controls autoplay loop muted>
+            <source src="animation.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <a href="moving_scene.wick" class="download-link">Download Wick Project File</a>
+    
+    <div class="description">
+        <h2>How to Use This Project</h2>
+        <ol>
+            <li>Download the .wick file above</li>
+            <li>Open it in Wick Editor (https://www.wickeditor.com/)</li>
+            <li>You can modify any elements or animations</li>
+            <li>To export your own version, go to File > Export > Animation/Video</li>
+        </ol>
+    </div>
+</body>
+</html>
