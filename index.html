@@ -3,85 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeeSunAnimation</title>
+    <title>Bee & Sun Animation | Wick Editor Project</title>
     <style>
+        :root {
+            --primary: #FFC107;
+            --secondary: #4CAF50;
+            --dark: #333;
+            --light: #f8f9fa;
+            --accent: #FF5722;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f5f5f5;
-        }
-        h1 {
+            background-color: #f0f8ff;
+            line-height: 1.6;
             color: #333;
-            text-align: center;
         }
+        
+        h1, h2 {
+            color: var(--dark);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 0;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            padding: 1rem;
+        }
+        
         .animation-container {
             background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s ease;
         }
+        
+        .animation-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+        }
+        
         .description {
             background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary);
         }
+        
         .download-link {
             display: block;
             text-align: center;
-            margin: 20px 0;
-            padding: 10px;
-            background-color: #4CAF50;
+            margin: 30px auto;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 50px;
             font-weight: bold;
+            font-size: 1.1rem;
+            width: fit-content;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
         }
+        
         .download-link:hover {
-            background-color: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+        }
+        
+        video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        strong {
+            color: var(--accent);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            border-top: 3px solid var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .animation-container, .description {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Multi-Layer Wick Editor Animation</h1>
+    <h1>🐝 Bee & Sun Animation 🌞</h1>
     
     <div class="description">
-        <p>This animation demonstrates a multi-layer scene with:</p>
-        <ul>
-            <li><strong>Background layer:</strong> Ground/flowers are static (no movement mentioned).</li>
-            <li><strong>Middle layer:</strong> Bee is the active element moving over the background.</li>
-            <li><strong>Foreground layer:</strong> Sun + text dominate visually with exaggerated motion.</li>
-        </ul>
-        <p>The animation is set to 30 FPS and lasts for 4 seconds, designed to loop seamlessly.</p>
+        <p>This whimsical animation created in Wick Editor features a delightful multi-layer scene with playful motion and unexpected humor.</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Background Layer</h3>
+                <p>A vibrant green grassy field with colorful flowers provides the static foundation for the animation.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>Middle Layer</h3>
+                <p>A cheerful bee buzzes in looping paths around the flowers, adding lively organic movement.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>Foreground Layer</h3>
+                <p>The spinning sun dramatically plunges downward while the "8 ÷ 8 = 3" text wobbles playfully.</p>
+            </div>
+        </div>
+        
+        <p>The animation runs at 30 FPS for 6 seconds and is designed to loop seamlessly with smooth transitions.</p>
     </div>
     
     <div class="animation-container">
+        <h2>Animation Preview</h2>
         <video width="800" height="600" controls autoplay loop muted playsinline>
-            <!-- Primary (MP4 must be H.264) -->
-            <source src="Bee-Sun-Flowers4-6-2025_18-29-26.mp4" type="video/mp4; codecs=avc1.42E01E">
-            
-            <!-- Fallback (WebM) -->
-            <source src="Bee-Sun-Flowers4-6-2025_18-29-26.webm" type="video/webm; codecs=vp8">
-            
-            <!-- Ultimate fallback -->
-            <p>Download the <a href="Bee-Sun-Flowers4-6-2025_18-29-26.mp4">MP4</a> or <a href="Bee-Sun-Flowers4-6-2025_18-29-26.webm">WebM</a> video.</p>
+            <source src="Bee-Sun-Flowers4-6-2025_18-29-26.mp4" type="video/mp4">
+            <source src="Bee-Sun-Flowers4-6-2025_18-29-26.webm" type="video/webm">
+            <p>Your browser doesn't support HTML5 video. Download the <a href="Bee-Sun-Flowers4-6-2025_18-29-26.mp4">MP4</a> or <a href="Bee-Sun-Flowers4-6-2025_18-29-26.webm">WebM</a> version.</p>
         </video>
     </div>
     
-    <a href="bee_scene.wick" class="download-link">Download Wick Project File</a>
+    <a href="bee_scene.wick" class="download-link">Download Wick Project File (.wick)</a>
     
     <div class="description">
         <h2>How to Use This Project</h2>
         <ol>
-            <li>Download the .wick file above</li>
-            <li>Open it in Wick Editor (https://www.wickeditor.com/)</li>
-            <li>You can modify any elements or animations</li>
-            <li>To export your own version, go to File > Export > Animation/Video</li>
+            <li><strong>Download</strong> the .wick file above</li>
+            <li><strong>Open</strong> it in <a href="https://www.wickeditor.com/" target="_blank">Wick Editor</a></li>
+            <li><strong>Modify</strong> any elements - change colors, paths, or timing</li>
+            <li><strong>Export</strong> your version (File > Export > Animation/Video)</li>
+            <li><strong>Share</strong> your creation with others!</li>
         </ol>
+        
+        <h3>Customization Tips</h3>
+        <ul>
+            <li>Change the bee's flight path by editing the position equations</li>
+            <li>Adjust the sun's falling speed and rotation</li>
+            <li>Try different fonts or colors for the "8 ÷ 8 = 3" text</li>
+            <li>Add sound effects for extra impact</li>
+        </ul>
     </div>
 </body>
 </html>
